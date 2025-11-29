@@ -1,0 +1,1 @@
+vesktop --class vesktop-scratchpad && spotify --class spotify-scratchpad
