@@ -4,7 +4,9 @@
 # Checks each folder in $HOME/.config/custom-config/themes/backgrounds/[theme-name]
 # and copies images to $HOME/.config/omarchy/themes/[theme-name]/backgrounds/
 
-CUSTOM_BACKGROUNDS_DIR="$HOME/.config/custom-config/themes/backgrounds"
+SETUP_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+CUSTOM_BACKGROUNDS_DIR="$SETUP_DIR/../themes/backgrounds"
 OMARCHY_THEMES_DIR="$HOME/.config/omarchy/themes"
 
 # Check if custom backgrounds directory exists
