@@ -2,7 +2,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 chmod +x $SCRIPT_DIR/../.config/hypr/*.sh
 
-cp $SCRIPT_DIR/../.config/hypr/* ~/.config/hypr/
+cp -r $SCRIPT_DIR/../.config/hypr/* ~/.config/hypr/
 
 
 hyprland_config_inject="source = ~/.config/hypr/custom-config.conf"
