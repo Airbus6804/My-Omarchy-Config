@@ -23,11 +23,11 @@ const lines = folders
         }
     })
     .sort((a, b) => {
-        const aDate = new Date(a.split('|')[2]);
-        const bDate = new Date(b.split('|')[2]);
+        const aDate = new Date(a?.split('|')[2]);
+        const bDate = new Date(b?.split('|')[2]);
         return bDate.getTime() - aDate.getTime();
     })
-    .map(line => line.split('|').filter((_,index) => index < 2).join('|'))
+    .map(line => line?.split('|').filter((_,index) => index < 2).join('|'))
     .filter(Boolean);
 
 stdout.write(lines.join('\n'));
