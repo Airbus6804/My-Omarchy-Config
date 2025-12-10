@@ -13,3 +13,4 @@ fi
 rm -rf ~/.config/waybar
 
 cp -r $SCRIPT_DIR/config ~/.config/waybar/
+
