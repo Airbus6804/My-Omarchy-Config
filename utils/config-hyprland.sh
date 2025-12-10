@@ -14,3 +14,7 @@ else
     echo "injecting hyprland config into $hyprland_config_file"
     echo "$hyprland_config_inject" >> $hyprland_config_file
 fi
+
+# setup waybar
+chmod +x $SCRIPT_DIR/../.config/waybar/setup-waybar.sh
+$SCRIPT_DIR/../.config/waybar/setup-waybar.sh
