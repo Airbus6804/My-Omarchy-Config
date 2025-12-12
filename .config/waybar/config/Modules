@@ -2,6 +2,15 @@
 
 {
 
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-no-controller": "",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "omarchy-launch-bluetooth"
+  },
+
 "battery": {
         "format": "{capacity}% {icon}",
         "format-icons": ["", "", "", "", ""]
@@ -38,8 +47,8 @@
 
      "network": {
 	     "format": "{ifname}",
-	     "format-wifi": "{icon} {ifname}",
-	     "format-ethernet": "󱚻 {ifname}",
+	     "format-wifi": "{icon}",
+	     "format-ethernet": "󰀂",
 	     "format-disconnected": "󰌙",
 	     "tooltip-format": "{ipaddr}  {bandwidthUpBits}  {bandwidthDownBits}",
 	     "format-linked": "󰈁 {ifname} (No IP)",
