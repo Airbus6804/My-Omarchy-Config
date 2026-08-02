@@ -11,9 +11,10 @@
     "on-click": "omarchy-launch-bluetooth"
   },
 
-"battery": {
+    "battery": {
         "format": "{capacity}% {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+        "on-click": "omarchy-menu power"
     },
     
     "clock": {
@@ -82,6 +83,12 @@
              "*": 5
        }
   },    
+
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛",
+    "on-click": "omarchy-launch-or-focus-tui btop"
+  },
   
   "tray": {
     "icon-size": 12,

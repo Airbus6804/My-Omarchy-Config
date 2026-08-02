@@ -104,10 +104,14 @@ get_installed_editors() {
 }
 
 get_tabs() {
-    all_count=0
+    declare -i all_count=0
     
     while IFS='|' read -r name config_path cmd editor_type; do
-        count=$(get_workspaces "$name" "$config_path" "$cmd" "$editor_type" | grep -c . || echo "0")
+        workspace_output=$(get_workspaces "$name" "$config_path" "$cmd" "$editor_type")
+        declare -i count=0
+        if [[ -n "$workspace_output" ]]; then
+            count=$(echo "$workspace_output" | wc -l)
+        fi
         all_count=$((all_count + count))
         echo "${name} (${count})|${name}"
     done < <(get_installed_editors)

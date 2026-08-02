@@ -8,9 +8,9 @@
     "position": "top",
     "margin-top": 5,
     "width": 1904,
-    "modules-left": [ "clock", "group/main", "tray", "hyprland/workspaces", "mpris"],
-    "modules-center": [ ],
-    "modules-right": [ "custom/update", "network", "bluetooth",  /*"pulseaudio",*/ "battery", "custom/power"  ],
+    "modules-left": [ "group/main", "tray", "hyprland/workspaces", "mpris"],
+    "modules-center": [ "clock" ],
+    "modules-right": [ "custom/update", "network", "bluetooth",  /*"pulseaudio",*/ "cpu", "battery", "custom/power"  ],
     "sway/window": {
         "max-length": 50
     },
