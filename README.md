@@ -22,6 +22,8 @@ This project provides a unified setup script that installs and configures:
 
 - **Background Images**: Injects custom background images from the project's theme directory into omarchy themes
 
+- **Lock Screen (hyprlock)**: Installs a custom lock screen (frosted panel with clock, date, greeting, battery and uptime) and injects a matching color palette into every omarchy theme, so the lock screen follows the active theme. Run standalone with `./utils/inject-hyprlock.sh`
+
 ### Applications
 
 - **Vesktop (Discord Client)**: 
@@ -54,9 +56,10 @@ The script will:
 2. Install and configure NVM with Node.js
 3. Inject background images into omarchy themes
 4. Configure Hyprland window manager
-5. Install and setup Vesktop
-6. Install Cursor editor
-7. Inject extended bashrc configuration into `~/.bashrc`
+5. Install the custom lock screen and inject its palette into every omarchy theme
+6. Install and setup Vesktop
+7. Install Cursor editor
+8. Inject extended bashrc configuration into `~/.bashrc`
 
 ## Requirements
 
