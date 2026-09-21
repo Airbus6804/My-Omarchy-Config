@@ -1,5 +1,22 @@
 -- Personal keybinding overrides (Omarchy 4 / Quattro).
 
+-- Universal copy/paste (Omarchy 3): Super+C/V → Ctrl+Insert / Shift+Insert on the
+-- active window. Never Ctrl+C in a terminal (that sends SIGINT).
+local function send_shortcut(mods, key)
+  return function()
+    hl.dispatch(hl.dsp.send_shortcut({
+      mods = mods,
+      key = key,
+      window = "activewindow",
+    }))
+  end
+end
+
+hl.unbind("SUPER + C")
+hl.unbind("SUPER + V")
+o.bind("SUPER + C", "Universal copy", send_shortcut("CTRL", "Insert"))
+o.bind("SUPER + V", "Universal paste", send_shortcut("SHIFT", "Insert"))
+
 -- Disable default app/webapp shortcuts (from unbind-bindings.conf)
 hl.unbind("SUPER + SHIFT + N")
 hl.unbind("SUPER + SHIFT + T")
@@ -18,7 +35,7 @@ hl.unbind("SUPER + SHIFT + ALT + X")
 
 -- Custom bindings (from custom-bindings.conf)
 hl.unbind("SUPER + SHIFT + S")
-o.bind("SUPER + SHIFT + S", "Screenshot to clipboard", "omarchy-cmd-screenshot smart clipboard")
+o.bind("SUPER + SHIFT + S", "Screenshot region to clipboard", "omarchy capture screenshot region copy")
 
 hl.unbind("SUPER + SHIFT + ALT + S")
 o.bind("SUPER + SHIFT + ALT + S", "Screenrecord screen", "omarchy-menu toggle screenrecord")
