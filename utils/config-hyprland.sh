@@ -1,20 +1,14 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-chmod +x $SCRIPT_DIR/../.config/hypr/*.sh
+chmod +x "$SCRIPT_DIR/../.config/hypr/"*.sh 2>/dev/null || true
+chmod +x "$SCRIPT_DIR/../.config/hypr/latest-cursor-projects-menu.sh/"*.sh 2>/dev/null || true
+chmod +x "$SCRIPT_DIR/../.config/hypr/lock/"*.sh 2>/dev/null || true
 
-cp -r $SCRIPT_DIR/../.config/hypr/* ~/.config/hypr/
+cp -r "$SCRIPT_DIR/../.config/hypr/"* ~/.config/hypr/
 
-
-hyprland_config_inject="source = ~/.config/hypr/custom-config.conf"
-hyprland_config_file="$HOME/.config/hypr/hyprland.conf"
-
-if [[ "$(cat $hyprland_config_file)" == *"$hyprland_config_inject"* ]]; then
-    echo "hyprland config already injected into $hyprland_config_file"
-else
-    echo "injecting hyprland config into $hyprland_config_file"
-    echo "$hyprland_config_inject" >> $hyprland_config_file
+# Omarchy 4 uses hyprland.lua; copy hyprlock.conf separately if missing
+if [[ -f "$SCRIPT_DIR/../.config/hypr/hyprlock.conf" ]]; then
+  cp "$SCRIPT_DIR/../.config/hypr/hyprlock.conf" ~/.config/hypr/hyprlock.conf
 fi
 
-# setup waybar
-chmod +x $SCRIPT_DIR/../.config/waybar/setup-waybar.sh
-$SCRIPT_DIR/../.config/waybar/setup-waybar.sh
+echo "Hyprland config synced to ~/.config/hypr/ (Omarchy 4 Lua files)"

@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "idle": {
+    "screensaver": 150,
+    "lock": 300
+  },
+  "bar": {
+    "position": "top",
+    "transparent": true,
+    "centerAnchor": "alessio.clock",
+    "layout": {
+      "left": [
+        {
+          "id": "omarchy.menu"
+        },
+        {
+          "id": "vicinae",
+          "type": "command",
+          "exec": "$HOME/.config/omarchy/bar/scripts/vicinae-status.sh",
+          "interval": 86400,
+          "tooltip": "Vicinae\n\nSuper + Space",
+          "onClick": "vicinae toggle"
+        },
+        {
+          "id": "omarchy.tray",
+          "tooltip": "System tray\n\nHover: expand · Right on chevron: manage"
+        },
+        {
+          "id": "alessio.workspaces",
+          "tooltip": "Workspaces A–J"
+        },
+        {
+          "id": "omarchy.media",
+          "tooltip": "Now playing\n\nLeft: play/pause · Middle: next · Scroll: prev/next · Right: details"
+        }
+      ],
+      "center": [
+        { "id": "omarchy.indicators" },
+        {
+          "id": "alessio.clock",
+          "format": "h:mm AP",
+          "formatAlt": "dddd  |  HH:mm  |  d MMMM",
+          "verticalFormat": "HH\n\u2014\nmm",
+          "tooltip": "Clock\n\nLeft: calendar · Right: cycle format · Middle: timezone"
+        },
+        { "id": "omarchy.keyboard-layout" },
+        {
+          "id": "alessio.weather",
+          "tooltip": "Weather\n\nLeft: forecast · Right: notification · Middle: refresh"
+        },
+        { "id": "omarchy.system-update" }
+      ],
+      "right": [
+        {
+          "id": "alessio.agents",
+          "tooltip": "AI agents\n\nLeft: usage · Right: launch · Middle: next provider"
+        },
+        {
+          "id": "alessio.bluetooth",
+          "tooltip": "Bluetooth\n\nLeft: devices · Right: toggle radio"
+        },
+        {
+          "id": "alessio.network",
+          "tooltip": "Network\n\nLeft: Wi-Fi panel"
+        },
+        {
+          "id": "alessio.audio",
+          "tooltip": "Audio\n\nLeft: panel · Right: mute · Scroll: volume"
+        },
+        {
+          "id": "cpu",
+          "type": "command",
+          "exec": "$HOME/.config/omarchy/bar/scripts/cpu-status.sh",
+          "interval": 86400,
+          "tooltip": "Activity\n\nOpen btop",
+          "onClick": "omarchy-launch-or-focus-tui btop"
+        },
+        {
+          "id": "alessio.monitor",
+          "tooltip": "Display\n\nLeft: panel · Scroll: brightness"
+        },
+        {
+          "id": "alessio.power",
+          "tooltip": "Power & battery\n\nLeft: panel · Right: toggle percentage"
+        }
+      ]
+    }
+  },
+  "plugins": []
+}

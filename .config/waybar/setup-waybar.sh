@@ -1,16 +1,5 @@
 #!/bin/bash
+# Legacy Omarchy 3 — Waybar is replaced by omarchy-shell on Omarchy 4.
+# Use utils/config-shell.sh instead.
 
-LOCK_FILE="~/.config/waybar/cp-lock"
-
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-
-
-if [[ ! -f "$LOCK_FILE" ]]; then
-    # File doesn't exist, do something here
-    cp -r ~/.config/waybar ~/.config/waybar.backup
-fi
-
-rm -rf ~/.config/waybar
-
-cp -r $SCRIPT_DIR/config ~/.config/waybar/
-
+echo "Skipped: Waybar is not used on Omarchy 4. Run utils/config-shell.sh."

@@ -1,0 +1,3 @@
+Configurare dockd
+Provare a fixare driver WiFi - Forse fatto, era un problema di DNS. Fix: sudo resolvectl dns wlan0 1.1.1.1 8.8.8.8
+Sistemare apertura automatica del browser quando si clicca il link o si fa login

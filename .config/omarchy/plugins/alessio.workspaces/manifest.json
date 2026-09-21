@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "alessio.workspaces",
+  "name": "My Workspaces",
+  "version": "1.0.0",
+  "author": "alessio",
+  "description": "Hyprland workspaces with A-J labels (from Waybar config)",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Workspaces.qml"
+  },
+  "barWidget": {
+    "displayName": "My Workspaces",
+    "description": "Workspace switcher with letter labels",
+    "category": "Compositor",
+    "allowMultiple": false
+  },
+  "omarchy": {
+    "clonedFrom": "omarchy.workspaces"
+  }
+}
