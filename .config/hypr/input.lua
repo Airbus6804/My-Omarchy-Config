@@ -6,6 +6,10 @@ hl.config({
     kb_options = "compose:caps,grp:alts_toggle",
     touchpad = {
       natural_scroll = true,
+      -- Right click on lower-right click zone, not two-finger click (Omarchy default).
+      clickfinger_behavior = false,
+      -- Hyprland/libinput: no per-finger tap toggle — off disables 2-finger (and 1-finger) tap.
+      tap_to_click = false,
     },
   },
 })
