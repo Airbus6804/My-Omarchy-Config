@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# Script to copy background images from custom-config to omarchy themes
-# Checks each folder in $HOME/.config/custom-config/themes/backgrounds/[theme-name]
-# and copies images to $HOME/.config/omarchy/themes/[theme-name]/backgrounds/
+# Script to copy background images from this repo to omarchy user backgrounds
+# Checks each folder in themes/backgrounds/[theme-name]
+# and copies images to $HOME/.config/omarchy/backgrounds/[theme-name]/
+# (Omarchy 4 reads this folder live; theme folders are snapshotted on theme-set)
 
 SETUP_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 CUSTOM_BACKGROUNDS_DIR="$SETUP_DIR/../themes/backgrounds"
-OMARCHY_THEMES_DIR="$HOME/.config/omarchy/themes"
+OMARCHY_BACKGROUNDS_DIR="$HOME/.config/omarchy/backgrounds"
 
 # Check if custom backgrounds directory exists
 if [ ! -d "$CUSTOM_BACKGROUNDS_DIR" ]; then
@@ -15,11 +16,6 @@ if [ ! -d "$CUSTOM_BACKGROUNDS_DIR" ]; then
     exit 1
 fi
 
-# Check if omarchy themes directory exists
-if [ ! -d "$OMARCHY_THEMES_DIR" ]; then
-    echo "Error: $OMARCHY_THEMES_DIR does not exist"
-    exit 1
-fi
 
 # Iterate through each theme folder in custom-config/themes/backgrounds
 for theme_dir in "$CUSTOM_BACKGROUNDS_DIR"/*; do
@@ -31,15 +27,8 @@ for theme_dir in "$CUSTOM_BACKGROUNDS_DIR"/*; do
     # Get the theme name (last folder name)
     theme_name=$(basename "$theme_dir")
     
-    # Check if corresponding theme exists in omarchy
-    omarchy_theme_dir="$OMARCHY_THEMES_DIR/$theme_name"
-    if [ ! -d "$omarchy_theme_dir" ]; then
-        echo "Warning: Theme '$theme_name' not found in omarchy/themes, skipping..."
-        continue
-    fi
-    
-    # Create backgrounds directory in omarchy theme if it doesn't exist
-    dest_dir="$omarchy_theme_dir/backgrounds"
+    # Create user backgrounds directory for this theme if it doesn't exist
+    dest_dir="$OMARCHY_BACKGROUNDS_DIR/$theme_name"
     mkdir -p "$dest_dir"
     
     # Copy all images from custom-config backgrounds directory
