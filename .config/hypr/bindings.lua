@@ -2,13 +2,15 @@
 
 -- Universal copy/paste (Omarchy 3): Super+C/V → Ctrl+Insert / Shift+Insert on the
 -- active window. Never Ctrl+C in a terminal (that sends SIGINT).
+-- send_shortcut can leave the synthetic key stuck and auto-repeating (endless
+-- paste with ~200[ bracketed-paste junk). Send down/up separately instead, like
+-- Omarchy's default clipboard.lua does.
 local function send_shortcut(mods, key)
   return function()
-    hl.dispatch(hl.dsp.send_shortcut({
-      mods = mods,
-      key = key,
-      window = "activewindow",
-    }))
+    hl.dispatch(hl.dsp.send_key_state({ mods = mods, key = key, state = "down" }))
+    hl.timer(function()
+      hl.dispatch(hl.dsp.send_key_state({ mods = mods, key = key, state = "up" }))
+    end, { timeout = 50, type = "oneshot" })
   end
 end
 
