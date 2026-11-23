@@ -33,7 +33,24 @@ for theme_dir in "$CUSTOM_BACKGROUNDS_DIR"/*; do
     
     # Copy all images from custom-config backgrounds directory
     echo "Copying backgrounds from $theme_name to omarchy..."
-    cp -n "$theme_dir"/* "$dest_dir/" 2>/dev/null || true
+    # Omarchy's image picker ignores HEIC/HEIF, so those get converted to JPG
+    for src in "$theme_dir"/*; do
+        [ -f "$src" ] || continue
+        name=$(basename "$src")
+        case "${name,,}" in
+            *.heic|*.heif)
+                dest="$dest_dir/${name%.*}.jpg"
+                rm -f "$dest_dir/$name"  # drop raw HEIC copies from older runs
+                if [ ! -e "$dest" ]; then
+                    magick "$src" -quality 100 "$dest" \
+                        || echo "  Warning: failed to convert $name"
+                fi
+                ;;
+            *)
+                cp -n "$src" "$dest_dir/" 2>/dev/null || true
+                ;;
+        esac
+    done
     
     # Count copied files
     copied_count=$(find "$dest_dir" -type f | wc -l)
